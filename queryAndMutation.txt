@@ -1,0 +1,64 @@
+# Write your query or mutation here
+mutation createCategory {
+  createCategory(input:{name:"Golang", description: "Go is Top"}) {
+    id
+    name
+    description
+  }
+}
+
+mutation createCourse {
+  createCourse(input:{
+    name: "Learning the basics"
+    description: "Hello world!"
+    categoryID: "T5577006791947779410"
+  }) {
+    id
+    name
+    description
+    category {
+      id
+      name
+    }
+  }
+}
+
+mutation createChapter {
+  createChapter(input: {
+    courseID: "T8674665223082153551"
+    name: "Learning println"
+  }) {
+    id
+    name
+    course {
+      name
+    }
+  }
+}
+
+query findCategories {
+  categories {
+    id
+    name
+    description
+    courses {
+      
+      name
+    }
+  }
+}
+
+query findCourses {
+  courses {
+    id
+    name
+    description
+    chapter {
+      id
+      name
+    }
+    category {
+      name
+    }
+  }
+}
